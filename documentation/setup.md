@@ -13,7 +13,7 @@ TBD
 
 https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-select-actions-and-reusable-workflows-to-run
 
-## Configuring the Cloud Identity Services Tenant
+## Configuring the SAP Cloud Identity Services Tenant
 
 To authenticate against Joule Studio, the workflow uses a GitHub-issued JWT that is exchanged for a Cloud Identity issued JWT.
 
@@ -100,27 +100,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Joule Studio CLI
+        uses: github.com/SAP/joule-actions/actions/setup-jl
+
       - name: Fetch SCI token
         id: fetch-token
-        uses: github.com/SAP/joule-actions/actions/token-fetch@v1
+        uses: github.com/SAP/joule-actions/actions/token-fetch@main
         with:
           cisTenantUrl: ${{ vars.SCI_TENANT_URL }}
           cisClientId: ${{ vars.SCI_CLIENT_ID }}
 
-      - name: Zip solution
+      - name: Build solution
         id: zip-solution
-        uses: github.com/SAP/joule-actions/actions/zip-solution@v1
+        uses: github.com/SAP/joule-actions/actions/build@main
 
-      - name: Import solution
-        id: import-solution
-        uses: github.com/SAP/joule-actions/actions/import-solution@v1
-        with:
-          cisToken: ${{ steps.fetch-token.outputs.cisToken }}
-          solutionHandlingApiBaseUrl: ${{ vars.SOLUTION_HANDLING_API_BASE_URL }}
-          solutionZip: ${{ steps.zip-solution.outputs.solutionZip }}
 
       - name: Deploy solution
-        uses: github.com/SAP/joule-actions/actions/deploy-solution@v1
+        uses: github.com/SAP/joule-actions/actions/deploy@main
         with:
           cisToken: ${{ steps.fetch-token.outputs.cisToken }}
           solutionHandlingApiBaseUrl: ${{ vars.SOLUTION_HANDLING_API_BASE_URL }}
