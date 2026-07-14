@@ -1,14 +1,15 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/joule-actions)](https://api.reuse.software/info/github.com/SAP/joule-actions)
 
-# joule-actions
+# Actions for Joule Studio
 
 ## About this project
 
-A set of GitHub actions to automate lifecycle operations for solutions developed with Joule Studio.
+Contents: A set of GitHub actions to automate lifecycle operations for solutions developed with Joule Studio.
+One application is the transport of solutions from a developement instance to a productive instance.
 
 ## Requirements and Setup
 
-*Insert a short description what is required to get your project running...*
+For a detail setup description, see the [detailed documentation](./documentation/setup.md).
 
 ## Support, Feedback, Contributing
 
