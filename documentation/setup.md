@@ -119,7 +119,7 @@ jobs:
         uses: github.com/SAP/joule-actions/actions/deploy@main
         with:
           cisToken: ${{ steps.fetch-token.outputs.cisToken }}
-          solutionHandlingApiBaseUrl: ${{ vars.SOLUTION_HANDLING_API_BASE_URL }}
+          solutionHandlingApiBaseUrl: ${{ vars.JOULE_STUDIO_URL }}
           solutionId: ${{ steps.import-solution.outputs.solutionId }}
 ```
 
@@ -132,7 +132,7 @@ Set them under **Settings → Secrets and variables → Actions → Variables**:
 |---|---|
 | `SCI_TENANT_URL` | Issuer URI of the SAP Cloud Identity Services tenant (e.g. `https://my-tenant.accounts.ondemand.com`) |
 | `SCI_CLIENT_ID` | Client ID of the SCI application created in the step above. |
-| `SOLUTION_HANDLING_API_BASE_URL` | Base URL of the Joule Studio solution handling API |
+| `JOULE_STUDIO_URL` | Base URL of the Joule Studio solution handling API. You can find it in Joule Studio, under `Settings` -> `Develop`. |
 
 
 [help.sap--jwt-bearer-flow]: https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/using-jwt-bearer-flow?version=Cloud
