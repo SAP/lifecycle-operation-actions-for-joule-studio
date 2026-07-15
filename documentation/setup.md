@@ -107,8 +107,8 @@ jobs:
         id: fetch-token
         uses: github.com/SAP/joule-actions/actions/token-fetch@main
         with:
-          cisTenantUrl: ${{ vars.SCI_TENANT_URL }}
-          cisClientId: ${{ vars.SCI_CLIENT_ID }}
+          sciTenantUrl: ${{ vars.SCI_TENANT_URL }}
+          sciClientId: ${{ vars.SCI_CLIENT_ID }}
 
       - name: Build solution
         id: zip-solution
@@ -118,15 +118,15 @@ jobs:
       - name: Deploy solution
         uses: github.com/SAP/joule-actions/actions/deploy@main
         with:
-          cisToken: ${{ steps.fetch-token.outputs.cisToken }}
-          solutionHandlingApiBaseUrl: ${{ vars.JOULE_STUDIO_URL }}
-          solutionId: ${{ steps.import-solution.outputs.solutionId }}
+          sciToken: ${{ steps.fetch-token.outputs.sciToken }}
+          jouleStudioUrl: ${{ vars.JOULE_STUDIO_URL }}
+          solutionZip: ${{ steps.zip-solution.outputs.solutionZip }}
 ```
 
 ### Configuring Repository Variables
 
 The workflow reads three variables from the GitHub repository.
-Set them under **Settings → Secrets and variables → Actions → Variables**:
+Set them under **Settings → Secrets and Variables → Actions → Variables**:
 
 | Variable | Description |
 |---|---|
