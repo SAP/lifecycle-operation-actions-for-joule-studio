@@ -5,7 +5,7 @@
 ## About this project
 
 Contents: A set of GitHub actions to automate lifecycle operations for solutions developed with Joule Studio.
-One application is the transport of solutions from a developement instance to a productive instance.
+One application is the transport of solutions from a development instance to a productive instance.
 
 ## Requirements and Setup
 
@@ -16,7 +16,7 @@ For a detail setup description, see the [detailed documentation](./documentation
 This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/joule-actions/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
 
 ## Security / Disclosure
-If you find any bug that may be a security problem, please follow our instructions at [in our security policy](https://github.com/SAP/joule-actions/security/policy) on how to report it. Please do not create GitHub issues for security-related doubts or problems.
+If you find any bug that may be a security problem, please follow our instructions [in our security policy](https://github.com/SAP/joule-actions/security/policy) on how to report it. Please do not create GitHub issues for security-related doubts or problems.
 
 ## Code of Conduct
 

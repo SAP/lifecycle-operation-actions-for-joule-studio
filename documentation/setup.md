@@ -1,6 +1,6 @@
 # ⚒️ Setup
 
-# Prequisites
+# Prerequisites
 
 - You have a repository which contains a solution developed with Joule Studio or Joule Pro Code.
     You want to automate the deployment of this solution.
