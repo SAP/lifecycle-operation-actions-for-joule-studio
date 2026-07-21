@@ -74,10 +74,45 @@ They are done in the admin console of the Cloud Identity services tenant.
 
     For more details, see the [Cloud Identity services documentation on JWT bearer flows][help.sap--jwt-bearer-flow].
 
+### Customizing the GitHub JWT Subject Claim
+
+By default, JWTs issued by GitHub have the following subject claim:
+
+    repo:MY-ORG/MY-REPO:ref:refs/heads/main
+
+i.e. they include the organisation, the repository and the branch.
+This means that for each repository containing a solution to be deployed to Joule Studio,
+a `Client Authentication` must be configured in the Cloud Identity services tenant.
+
+For an organisation with many repositories, that might be undesirable.
+To avoid this, you can configure a subject customization template as described in the [GitHub documentation][github--customize-subject].
+
+For example, the following API call
+
+```bash
+curl -L \
+  -X PUT \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  http(s)://HOSTNAME/api/v3/orgs/MY-ORG/actions/oidc/customization/sub \
+  -d '{"include_claim_keys":["repository_owner","context"]}'
+```
+
+would yield a subject claim:
+
+  repository_owner:MY-ORG:ref:refs/heads/main
+
+for _all_ repositories under `MY-ORG`.
+
 
 ### Security Implications
 
-This configuration allows GitHub workflows running on the main branch in `my-org/my-repo` to gain access to the solution management API of Joule Studio.
+The configurations outlined above allow certain GitHub workflows access to Joule Studio.
+Review your settings carefully to understand which repositories and workflows will gain access.
+
+For example, when setting a custom subject template at the organisation level that does not include the repository, you need to carefully control who can create new repositories in the organisation.
+
 
 ## Creating the Workflow
 
@@ -137,3 +172,4 @@ Set them under **Settings → Secrets and Variables → Actions → Variables**:
 
 [help.sap--jwt-bearer-flow]: https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/using-jwt-bearer-flow?version=Cloud
 [help.sap---integrating-applications]: https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/integrating-applications?version=Cloud&q=dependencies
+[github--customize-subject]: https://docs.github.com/en/enterprise-server@3.12/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-subject-claims-for-an-organization-or-repository
