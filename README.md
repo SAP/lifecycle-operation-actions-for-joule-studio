@@ -1,6 +1,6 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/joule-actions)](https://api.reuse.software/info/github.com/SAP/joule-actions)
 
-# Actions for Joule Studio
+# Lifecycle Operation Actions for Joule Studio
 
 ## About this project
 
