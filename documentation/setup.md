@@ -55,11 +55,17 @@ They are done in the admin console of the Cloud Identity services tenant.
 
     ![JSON Web Token Dialog](./images/client_auth.png)
 
-    This is the token issuer URL for `github.com`:
+    Use the token issuer URL that matches your GitHub variant.
+
+    For `github.com` and GitHub Enterprise Cloud:
 
         https://token.actions.githubusercontent.com
 
-    Enter it in the field `Issuer` and click `Check for Metadata`. The field `JSON Web Key Set URI` will be populated automatically.
+    For GitHub Enterprise Server (self-hosted), replace `HOSTNAME` with your instance hostname:
+
+        https://HOSTNAME/_services/token
+
+    Enter it in the field `Issuer` and click `Check for Metadata`. The field `JSON Web Key Set URI` is populated automatically from the issuer's discovery endpoint.
 
     Here is the template for the subject:
 
