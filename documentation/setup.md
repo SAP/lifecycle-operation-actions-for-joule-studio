@@ -133,29 +133,23 @@ jobs:
       contents: read   # required for actions/checkout
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Joule Studio CLI
-        uses: github.com/SAP/joule-actions/actions/setup-jl
+        uses: SAP/lifecycle-operation-actions-for-joule-studio/actions/setup-jl@v1
 
       - name: Fetch SCI token
         id: fetch-token
-        uses: github.com/SAP/joule-actions/actions/token-fetch@main
+        uses: SAP/lifecycle-operation-actions-for-joule-studio/actions/token-fetch@v1
         with:
           sciTenantUrl: ${{ vars.SCI_TENANT_URL }}
           sciClientId: ${{ vars.SCI_CLIENT_ID }}
 
-      - name: Build solution
-        id: zip-solution
-        uses: github.com/SAP/joule-actions/actions/build@main
-
-
       - name: Deploy solution
-        uses: github.com/SAP/joule-actions/actions/deploy@main
+        uses: SAP/lifecycle-operation-actions-for-joule-studio/actions/deploy@v1
         with:
           sciToken: ${{ steps.fetch-token.outputs.sciToken }}
           jouleStudioUrl: ${{ vars.JOULE_STUDIO_URL }}
-          solutionZip: ${{ steps.zip-solution.outputs.solutionZip }}
 ```
 
 ### Configuring Repository Variables
