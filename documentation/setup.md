@@ -9,9 +9,11 @@
 
 ## Allowing the Use of Actions
 
-TBD
+GitHub Actions must be enabled for the repository before the deployment workflow can run.
+Depending on your organization's policy, Actions may be disabled by default and have to be enabled at the organization or repository level.
+If Actions are not enabled, contact your GitHub administrators to enable Actions for your organization.
 
-https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-select-actions-and-reusable-workflows-to-run
+For details, see [Managing GitHub Actions settings for a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-select-actions-and-reusable-workflows-to-run).
 
 ## Configuring the SAP Cloud Identity Services Tenant
 
